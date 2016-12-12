@@ -15,6 +15,7 @@ public class Coin : MonoBehaviour
 		Object.Instantiate(CoinPoofPrefab);
         // Make sure the poof animates vertically
         // Destroy this coin. Check the Unity documentation on how to use Destroy
+		Destroy(gameObject);
     }
 
 }

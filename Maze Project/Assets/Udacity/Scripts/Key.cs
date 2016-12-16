@@ -22,7 +22,7 @@ public class Key : MonoBehaviour
 		Instantiate(keyPoof, transform.position, Quaternion.identity);
         // Make sure the poof animates vertically
 		// Call the Unlock() method on the Door
-		door.Unlock();
+		//Unlock(locked == false); 
 		// Destroy the key. Check the Unity documentation on how to use Destroy
 		Destroy(gameObject);
     }

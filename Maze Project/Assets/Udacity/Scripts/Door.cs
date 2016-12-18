@@ -9,10 +9,10 @@ public class Door : MonoBehaviour
 
     void Update() {
         // If the door is unlocked and it is not fully raised
-		if(locked == false) 
+		if(locked = false) 
 		{
 		// Animate the door raising up
-			transform.Translate(0, -2.5f * Time.deltaTime, 0);
+			transform.Translate(0, 2.5f * Time.deltaTime, 0);
 		}
 }
 
@@ -20,6 +20,7 @@ public class Door : MonoBehaviour
     public void Unlock()
     {
         // You'll need to set "locked" to true here
-		locked == true;
+		locked = true;
+		Debug.Log ("Unlock called!");
     }
 }

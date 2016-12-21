@@ -17,7 +17,7 @@ public class Door : MonoBehaviour {
 
     void Update() {
         // If the door is unlocked and it is not fully raised
-		if(!locked && raised == true) {
+		if(locked && raised == true) {
 			// Animate the door raising up
 				transform.Translate (0, 2.5f * Time.deltaTime, 0);
 

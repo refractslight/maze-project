@@ -7,7 +7,6 @@ public class Key : MonoBehaviour
 {
     //Create a reference to the KeyPoofPrefab and Door
 	public GameObject keyPoof;
-	//public GameObject door;
 	public Door door;
 
 	void Update()
@@ -20,12 +19,13 @@ public class Key : MonoBehaviour
 	public void OnKeyClicked()
 	{
         // Instatiate the KeyPoof Prefab where this key is located
-		Instantiate(keyPoof, transform.position, Quaternion.identity);
-        // Make sure the poof animates vertically
+		// Make sure the poof animates vertically
+		Instantiate(keyPoof, transform.position, keyPoof.transform.rotation);
+		Destroy(gameObject);
 		// Call the Unlock() method on the Door
 		door.Unlock();
 		// Destroy the key. Check the Unity documentation on how to use Destroy
-		Destroy(gameObject);
+
     }
 
 }

@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class Door : MonoBehaviour {
 	
     // Create a boolean value called "locked" that can be checked in Update() 
 	private bool locked;
 	private bool raised;
 	public GameObject keyPrefab;
-	public AudioClip[] doorSounds;
+	public AudioClip doorOpened;
+	public AudioClip doorLocked;
 	public AudioSource doorSoundPlayer;
 
-//	private float open = 25;
 
-	void start() {
-		
+	void Start() {
+		//doorSoundPlayer = GetComponent<AudioSource>();
 		//locked = true;
 		//raised = false;
 	}
@@ -24,26 +26,29 @@ public class Door : MonoBehaviour {
 		if (locked && raised == true) {
 			// Animate the door raising up
 			transform.Translate (0, 2.5f * Time.deltaTime, 0);
-
-	
 		}
 	}	
 		
     public void Unlock() {
         // You'll need to set "locked" to true here
 		locked = true;
-		Debug.Log ("Unlock called!");
+		Debug.Log ("Unlocked!");
     }
-
 
 	public void Raise() {
 		//if there's no key, the door can be raised
 		if (keyPrefab == null) {
 			raised = true;
-			//doorSoundPlayer.clip = ;
-		}
-			
+			doorSoundPlayer.clip = doorOpened;
+			doorSoundPlayer.Play();
+			Debug.Log ("Key collected! Up we go!");
 
-	Debug.Log ("Raised called!");
+		} 
+		else {
+			doorSoundPlayer.clip = doorLocked;
+			doorSoundPlayer.Play();
+			Debug.Log ("No Key Collected. Staying shut.");
+		}
+
 	}
 }

@@ -16,12 +16,10 @@ public class Door : MonoBehaviour {
 
 
 	void Start() {
-		//doorSoundPlayer = GetComponent<AudioSource>();
-		//locked = true;
-		//raised = false;
 	}
 
     void Update() {
+		
         // If the door is unlocked and it is not fully raised
 		if (locked && raised == true) {
 			// Animate the door raising up
@@ -31,16 +29,25 @@ public class Door : MonoBehaviour {
 		
     public void Unlock() {
         // You'll need to set "locked" to true here
-		locked = true;
-		Debug.Log ("Unlocked!");
+		if (Key.isCollected == true) {
+			locked = true;
+			doorSoundPlayer.clip = doorOpened;
+			doorSoundPlayer.Play();
+			Debug.Log ("Unlocked!");
+		}
+		else {
+			doorSoundPlayer.clip = doorLocked;
+			doorSoundPlayer.Play();
+			Debug.Log ("No Key Collected. Staying shut.");
+		}
     }
 
 	public void Raise() {
 		//if there's no key, the door can be raised
 		if (keyPrefab == null) {
 			raised = true;
-			doorSoundPlayer.clip = doorOpened;
-			doorSoundPlayer.Play();
+			/*doorSoundPlayer.clip = doorOpened;
+			doorSoundPlayer.Play();*/
 			Debug.Log ("Key collected! Up we go!");
 
 		} 

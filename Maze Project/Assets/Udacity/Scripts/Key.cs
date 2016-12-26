@@ -9,6 +9,7 @@ public class Key : MonoBehaviour
 	public GameObject keyPoof;
 	public Door door;
 	public GameObject keyPrefab;
+	public static bool isCollected;
 
 	void Update()
 	{
@@ -19,6 +20,7 @@ public class Key : MonoBehaviour
 
 	public void OnKeyClicked()
 	{
+		isCollected = true;
         // Instatiate the KeyPoof Prefab where this key is located
 		// Make sure the poof animates vertically
 		Instantiate(keyPoof, transform.position, keyPoof.transform.rotation);
